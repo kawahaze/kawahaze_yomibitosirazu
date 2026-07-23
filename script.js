@@ -5,10 +5,30 @@ const number = document.getElementById("number");
 
 function show(){
 
-poem.innerHTML = poems[current].replace(/\n/g,"<br>");
+    poem.classList.remove("show");
 
-number.textContent =
-(current+1) + " / " + poems.length;
+    author.classList.remove("show");
+
+    poem.classList.add("fade");
+
+    author.classList.add("fade");
+
+    setTimeout(()=>{
+
+        poem.innerHTML =
+        poems[current].text.replace(/\n/g,"<br>");
+
+        author.textContent =
+        poems[current].author;
+
+        number.textContent =
+        (current+1)+" / "+poems.length;
+
+        poem.classList.add("show");
+
+        author.classList.add("show");
+
+    },400);
 
 }
 
