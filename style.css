@@ -89,6 +89,18 @@ letter-spacing:.15em;
 
 }
 
+#author{
+
+    margin-top:40px;
+
+    font-size:14px;
+
+    color:#666;
+
+    letter-spacing:.15em;
+
+}
+
 nav{
 
 display:flex;
