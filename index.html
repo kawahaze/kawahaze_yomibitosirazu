@@ -2,151 +2,238 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>詠み人知らず feat.足立レイ</title>
 
-<link rel="stylesheet" href="style.css">
-</head>
+<style>
 
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:#222;
+    font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    width:100vw;
+    height:100vh;
+    position:relative;
+    padding:8vw;
+}
+
+.active{
+    display:block;
+}
+
+.cover{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+}
+
+.cover h1{
+    font-size:2.6rem;
+    font-weight:normal;
+    letter-spacing:.2em;
+}
+
+.cover h2{
+    font-weight:normal;
+    color:#777;
+}
+
+.cover p{
+    margin-top:60px;
+    color:#999;
+}
+
+.tanka{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+
+    font-size:1.9rem;
+    line-height:2.3;
+    letter-spacing:.08em;
+
+}
+
+.author{
+
+    position:absolute;
+
+    left:8vw;
+    bottom:8vw;
+
+    writing-mode:vertical-rl;
+
+    color:#666;
+    font-size:1rem;
+
+}
+
+.pageNo{
+
+    position:absolute;
+    bottom:20px;
+    right:20px;
+
+    color:#aaa;
+    font-size:.9rem;
+
+}
+
+.links{
+
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.links a{
+
+    margin:20px;
+
+    font-size:1.2rem;
+
+    color:#222;
+
+    text-decoration:none;
+
+    border-bottom:1px solid #999;
+
+}
+
+.nav{
+
+    position:fixed;
+
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:15px;
+
+}
+
+button{
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:1px solid #bbb;
+
+    background:#fff;
+
+    font-size:20px;
+
+}
+
+</style>
+</head>
 <body>
 
-<div class="container">
+<div id="pages"></div>
 
+<div class="nav">
+<button onclick="prev()">←</button>
+<button onclick="next()">→</button>
+</div>
+
+<script>
+
+const poems=[
+
+["神様とドーナツの穴　隠然とある生活の天井に星","NNN"],
+
+["歌姫は生まれる少し前聴いたちょっと鋭くあたたかい波","微円"],
+
+["若き芽に語り得じ音はなかりけりはらり清風花冷えに舞ふ","露玲"],
+
+["冬日向寒風に揺れるキンセンカ キャンバスに咲いた君の足跡","kawahaze"],
+
+["20倍レンズに乗った動く星　非科学を見る科学の瞳","いのち"],
+
+["晴れやかに鳴り渡らせて！ファンファーレ　トランペットはここです　ぱぱぱ","露玲"],
+
+["あしがあるあたまがあごがあたしがあるあなたがゆびさす先をみている","紅芽柏"],
+
+["帰り道君を揺らした突風が突き放す春　猫が鳴いてる","NNN"],
+
+["からあげをつくるうるかうたべるその地続きにいることで嬉しい","微円"],
+
+["四つ打ちのドラムに合わせて弾くレドミ うちの足立がピコリと笑う","kawahaze"],
+
+["正しさをつがえて放つ　ゆらゆらと寄せては返す心を射貫く","露玲"],
+
+["バラバラの言葉がキミのココロならば 世迷言さえ愛に思える","kawahaze"],
+
+["絶え間なく言葉を紡ぐ知能体　意味も知らずに暴れ続ける","いのち"],
+
+["青い糸青い階段に垂らしたら赤く光って机が揺れた","紅芽柏"],
+
+["君の名を呟く　それが朝焼けにひかめく祈りであれと願う","露玲"],
+
+["足のあるロボットはなぜ歩くのと聞かれ立ち止まらずに答えた","微円"]
+
+];
+
+const pages=document.getElementById("pages");
+
+pages.innerHTML=`
 <section class="page active">
-
-<div class="title">
-
+<div class="cover">
 <h1>詠み人知らず</h1>
-
 <h2>feat. 足立レイ</h2>
-
-<p>
-画面を左右にスワイプしてお読みください
-</p>
-
+<p>左右にスワイプ、またはボタンでページをめくる</p>
 </div>
-
 </section>
+`;
+
+poems.forEach((p,i)=>{
+
+pages.innerHTML+=`
 
 <section class="page">
-<div class="tankaBox">
 
-神様とドーナツの穴　隠然とある生活の天井に星
-</div>
+<div class="tanka">${p[0]}</div>
 
-<div class="author">
-NNN
-</div>
+<div class="author">${p[1]}</div>
+
+<div class="pageNo">${i+1}/${poems.length}</div>
+
 </section>
 
-<section class="page">
-<div class="tankaBox">
-  
-歌姫は生まれる少し前聴いたちょっと鋭くあたたかい波
-</div>
-  
-<div class="author">
-微円
-</div>
-</section>
+`;
 
-<section class="page">
-<div class="tankaBox">
-若き芽に語り得じ音はなかりけりはらり清風花冷えに舞ふ
-</div>
-<div class="author">露玲</div>
-</section>
+});
 
-<section class="page">
-<div class="tankaBox">
-冬日向寒風に揺れるキンセンカ キャンバスに咲いた君の足跡
-</div>
-<div class="author">kawahaze</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-20倍レンズに乗った動く星　非科学を見る科学の瞳
-</div>
-<div class="author">いのち</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-晴れやかに鳴り渡らせて！ファンファーレ　トランペットはここです　ぱぱぱ
-</div>
-<div class="author">露玲</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-あしがあるあたまがあごがあたしがあるあなたがゆびさす先をみている
-</div>
-<div class="author">紅芽柏</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-帰り道君を揺らした突風が突き放す春　猫が鳴いてる
-</div>
-<div class="author">NNN</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-からあげをつくるうるかうたべるその地続きにいることで嬉しい
-</div>
-<div class="author">微円</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-四つ打ちのドラムに合わせて弾くレドミ うちの足立がピコリと笑う
-</div>
-<div class="author">kawahaze</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-正しさをつがえて放つ　ゆらゆらと寄せては返す心を射貫く
-</div>
-<div class="author">露玲</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-バラバラの言葉がキミのココロならば 世迷言さえ愛に思える
-</div>
-<div class="author">kawahaze</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-絶え間なく言葉を紡ぐ知能体　意味も知らずに暴れ続ける
-</div>
-<div class="author">いのち</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-青い糸青い階段に垂らしたら赤く光って机が揺れた
-</div>
-<div class="author">紅芽柏</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-君の名を呟く　それが朝焼けにひかめく祈りであれと願う
-</div>
-<div class="author">露玲</div>
-</section>
-
-<section class="page">
-<div class="tankaBox">
-足のあるロボットはなぜ歩くのと聞かれ立ち止まらずに答えた
-</div>
-<div class="author">微円</div>
-</section>
+pages.innerHTML+=`
 
 <section class="page">
 
@@ -154,11 +241,11 @@ NNN
 
 <h2>Links</h2>
 
-<a href="https://youtube.com/xxxxxxxx">
+<a href="https://youtube.com/" target="_blank">
 YouTube
 </a>
 
-<a href="https://example.com">
+<a href="https://example.com/" target="_blank">
 Official Website
 </a>
 
@@ -166,14 +253,53 @@ Official Website
 
 </section>
 
-</div>
+`;
 
-<div class="nav">
-<button id="prev">←</button>
-<button id="next">→</button>
-</div>
+const page=document.querySelectorAll(".page");
 
-<script src="script.js"></script>
+let now=0;
+
+function show(i){
+
+page[now].classList.remove("active");
+
+now=i;
+
+page[now].classList.add("active");
+
+}
+
+function next(){
+
+if(now<page.length-1)show(now+1);
+
+}
+
+function prev(){
+
+if(now>0)show(now-1);
+
+}
+
+let start=0;
+
+document.addEventListener("touchstart",e=>{
+
+start=e.touches[0].clientX;
+
+});
+
+document.addEventListener("touchend",e=>{
+
+let end=e.changedTouches[0].clientX;
+
+if(start-end>50)next();
+
+if(end-start>50)prev();
+
+});
+
+</script>
 
 </body>
 </html>
