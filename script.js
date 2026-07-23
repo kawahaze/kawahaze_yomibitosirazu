@@ -1,32 +1,18 @@
 let current = 0;
 
 const poem = document.getElementById("poem");
-const author = document.getElementById("author");
 const number = document.getElementById("number");
 
 function show(){
 
-poem.classList.remove("show");
-author.classList.remove("show");
+poem.innerHTML = poems[current].replace(/\n/g,"<br>");
 
-setTimeout(() => {
-
-    poem.innerHTML =
-        poems[current].text.replace(/\n/g,"<br>");
-
-    author.textContent =
-        poems[current].author;
-
-    number.textContent =
-        (current+1) + " / " + poems.length;
-
-    poem.classList.add("show");
-    author.classList.add("show");
-
-},300);
+number.textContent =
+(current+1) + " / " + poems.length;
 
 }
 
+show();
 
 document.getElementById("next").onclick=()=>{
 
@@ -55,24 +41,3 @@ current=poems.length-1;
 show();
 
 }
-
-document
-.getElementById("openBook")
-.onclick=()=>{
-
-    document
-    .getElementById("cover")
-    .classList.add("hidden");
-
-    document
-    .getElementById("viewer")
-    .classList.remove("hidden");
-
-    document
-    .getElementById("navigation")
-    .classList.remove("hidden");
-
-    show();
-
-}
-
