@@ -1,15 +1,16 @@
 body{
 
-margin:0;
+    background:
 
-background:#fafaf8;
+    linear-gradient(
 
-font-family:
-"Yu Mincho",
-"Noto Serif JP",
-serif;
+        to bottom,
 
-color:#222;
+        #fafaf8,
+
+        #f3f1eb
+
+    );
 
 }
 
@@ -49,15 +50,15 @@ padding:60px 30px;
 
 #viewer{
 
-min-height:420px;
+    min-height:80vh;
 
-display:flex;
+    display:flex;
 
-flex-direction:column;
+    flex-direction:column;
 
-justify-content:center;
+    justify-content:center;
 
-align-items:center;
+    align-items:center;
 
 }
 
@@ -75,17 +76,17 @@ letter-spacing:.2em;
 
 #poem{
 
-font-size:2rem;
+    writing-mode:vertical-rl;
 
-line-height:2.2;
+    text-orientation:mixed;
 
-writing-mode:vertical-rl;
+    height:500px;
 
-text-orientation:mixed;
+    display:flex;
 
-height:500px;
+    justify-content:center;
 
-letter-spacing:.15em;
+    align-items:center;
 
 }
 
@@ -137,6 +138,12 @@ color:white;
 
 }
 
+button{
+
+    border-radius:40px;
+
+}
+
 footer{
 
 margin-top:100px;
@@ -179,13 +186,17 @@ opacity:.4;
 
 #cover img{
 
-    width:320px;
+    width:340px;
 
     max-width:80%;
 
-    margin-bottom:40px;
+    border-radius:4px;
 
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.2),
+
+        0 5px 10px rgba(0,0,0,.1);
 
 }
 
@@ -202,5 +213,29 @@ opacity:.4;
     padding:15px 40px;
 
     font-size:16px;
+
+}
+
+@media (max-width:768px){
+
+    #poem{
+
+        font-size:1.5rem;
+
+        height:360px;
+
+    }
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    button{
+
+        width:140px;
+
+    }
 
 }
