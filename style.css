@@ -162,3 +162,45 @@ opacity:.4;
     opacity:1;
 
 }
+
+.page{
+
+    min-height:85vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#cover img{
+
+    width:320px;
+
+    max-width:80%;
+
+    margin-bottom:40px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+#openBook{
+
+    margin-top:40px;
+
+    padding:15px 40px;
+
+    font-size:16px;
+
+}
