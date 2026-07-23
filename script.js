@@ -41,3 +41,13 @@ current=poems.length-1;
 show();
 
 }
+
+const author =
+document.getElementById("author");
+
+
+poem.innerHTML =
+poems[current].text.replace(/\n/g,"<br>");
+
+author.textContent =
+poems[current].author;
