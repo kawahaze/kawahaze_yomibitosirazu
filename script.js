@@ -1,43 +1,63 @@
-let current = 0;
+const pages=document.querySelectorAll(".page");
 
-const poem = document.getElementById("poem");
-const number = document.getElementById("number");
+let page=0;
 
-function show(){
+function show(i){
 
-poem.innerHTML = poems[current].replace(/\n/g,"<br>");
+pages[page].classList.remove("active");
 
-number.textContent =
-(current+1) + " / " + poems.length;
+page=i;
+
+if(page<0)page=0;
+
+if(page>=pages.length)page=pages.length-1;
+
+pages[page].classList.add("active");
 
 }
-
-show();
 
 document.getElementById("next").onclick=()=>{
 
-current++;
+if(page<pages.length-1)
 
-if(current>=poems.length){
-
-current=0;
-
-}
-
-show();
+show(page+1);
 
 }
 
 document.getElementById("prev").onclick=()=>{
 
-current--;
+if(page>0)
 
-if(current<0){
-
-current=poems.length-1;
+show(page-1);
 
 }
 
-show();
+let startX=0;
+
+document.addEventListener("touchstart",(e)=>{
+
+startX=e.touches[0].clientX;
+
+});
+
+document.addEventListener("touchend",(e)=>{
+
+let endX=e.changedTouches[0].clientX;
+
+if(startX-endX>50){
+
+if(page<pages.length-1)
+
+show(page+1);
 
 }
+
+if(endX-startX>50){
+
+if(page>0)
+
+show(page-1);
+
+}
+
+});
