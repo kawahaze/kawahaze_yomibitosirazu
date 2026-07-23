@@ -62,6 +62,26 @@ show();
 
 }
 
+document
+.getElementById("openBook")
+.onclick=()=>{
+
+    document
+    .getElementById("cover")
+    .classList.add("hidden");
+
+    document
+    .getElementById("viewer")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("navigation")
+    .classList.remove("hidden");
+
+    show();
+
+}
+
 const author =
 document.getElementById("author");
 
