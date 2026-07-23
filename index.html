@@ -71,9 +71,9 @@ body{
     writing-mode:vertical-rl;
     text-orientation:mixed;
 
-    font-size:1.9rem;
-    line-height:2.3;
-    letter-spacing:.08em;
+    font-size:clamp(1.2rem, 3vw, 1.9rem);
+
+}
 
 }
 
@@ -81,8 +81,10 @@ body{
 
     position:absolute;
 
-    left:8vw;
-    bottom:8vw;
+    left:28%;
+    top:50%;
+
+    transform:translateY(-50%);
 
     writing-mode:vertical-rl;
 
@@ -151,6 +153,58 @@ button{
     background:#fff;
 
     font-size:20px;
+
+}
+
+/* ---------- スマホ表示 ---------- */
+@media (max-width:768px){
+
+    .page{
+        padding:6vw;
+    }
+
+    .tanka{
+
+        font-size:1.25rem;      /* 1.9rem → 小さく */
+        line-height:1.8;
+        letter-spacing:.04em;
+
+    }
+
+    .author{
+
+        left:18vw;              /* 短歌へ近付ける */
+        bottom:10vw;
+
+        font-size:.9rem;
+
+    }
+
+    .cover h1{
+        font-size:2rem;
+    }
+
+    .cover h2{
+        font-size:1.1rem;
+    }
+
+    .cover p{
+        font-size:.9rem;
+        text-align:center;
+        margin-top:40px;
+    }
+
+    .links a{
+        font-size:1rem;
+    }
+
+    button{
+
+        width:44px;
+        height:44px;
+        font-size:18px;
+
+    }
 
 }
 
