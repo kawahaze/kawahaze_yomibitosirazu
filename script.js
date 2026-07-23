@@ -1,6 +1,15 @@
 let current = 0;
 
-const poem = document.getElementById("poem");
+const author =
+document.getElementById("author");
+
+
+poem.innerHTML =
+poems[current].text.replace(/\n/g,"<br>");
+
+author.textContent =
+poems[current].author;
+
 const number = document.getElementById("number");
 
 function show(){
@@ -82,12 +91,3 @@ document
 
 }
 
-const author =
-document.getElementById("author");
-
-
-poem.innerHTML =
-poems[current].text.replace(/\n/g,"<br>");
-
-author.textContent =
-poems[current].author;
