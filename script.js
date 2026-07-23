@@ -1,47 +1,32 @@
 let current = 0;
 
-const author =
-document.getElementById("author");
-
-
-poem.innerHTML =
-poems[current].text.replace(/\n/g,"<br>");
-
-author.textContent =
-poems[current].author;
-
+const poem = document.getElementById("poem");
+const author = document.getElementById("author");
 const number = document.getElementById("number");
 
 function show(){
 
-    poem.classList.remove("show");
+poem.classList.remove("show");
+author.classList.remove("show");
 
-    author.classList.remove("show");
+setTimeout(() => {
 
-    poem.classList.add("fade");
-
-    author.classList.add("fade");
-
-    setTimeout(()=>{
-
-        poem.innerHTML =
+    poem.innerHTML =
         poems[current].text.replace(/\n/g,"<br>");
 
-        author.textContent =
+    author.textContent =
         poems[current].author;
 
-        number.textContent =
-        (current+1)+" / "+poems.length;
+    number.textContent =
+        (current+1) + " / " + poems.length;
 
-        poem.classList.add("show");
+    poem.classList.add("show");
+    author.classList.add("show");
 
-        author.classList.add("show");
-
-    },400);
+},300);
 
 }
 
-show();
 
 document.getElementById("next").onclick=()=>{
 
